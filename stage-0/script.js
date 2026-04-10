@@ -1,4 +1,4 @@
-const dueDate = new Date('2026-03-01T18:00:00Z');
+const dueDate = new Date('2026-04-12T18:00:00Z');
 
 const remainingEl = document.querySelector('[data-testid="test-todo-time-remaining"]');
 const statusEl = document.querySelector('[data-testid="test-todo-status"]');
