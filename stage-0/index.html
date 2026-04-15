@@ -24,52 +24,95 @@
       <span></span>
     </label>
 
-    <span
-      class="badge high"
-      data-testid="test-todo-priority"
-      aria-label="Priority High"
-    >
-      High
-    </span>
+    <div class="priority-status-row">
+      <span
+        class="badge high"
+        data-testid="test-todo-priority"
+        aria-label="Priority High"
+      >
+        High
+      </span>
+      <span
+        class="priority-indicator"
+        data-testid="test-todo-priority-indicator"
+        aria-label="High priority"
+      ></span>
+    </div>
   </div>
 
   <!-- TITLE -->
   <h2 data-testid="test-todo-title">Finish UI Todo Card</h2>
 
   <!-- DESCRIPTION -->
-  <p data-testid="test-todo-description">
-    Build a fully accessible and responsive todo card with proper semantics and test IDs.
-  </p>
+  <div class="description-container">
+    <p data-testid="test-todo-description">
+      Build a fully accessible and responsive todo card with proper semantics and test IDs.
+    </p>
+    <button
+      data-testid="test-todo-expand-toggle"
+      aria-expanded="false"
+      aria-controls="collapsible-section"
+      aria-label="Expand description"
+      class="expand-toggle"
+    >
+      Show more
+    </button>
+    <div
+      id="collapsible-section"
+      data-testid="test-todo-collapsible-section"
+      class="collapsible-section"
+      aria-hidden="true"
+    >
+      <!-- Additional content will be added here if needed -->
+    </div>
+  </div>
 
   <!-- STATUS + TIME -->
   <div class="row">
-    <span
-      class="badge status"
-      data-testid="test-todo-status"
-    >
-      Pending
-    </span>
+    <div class="status-controls">
+      <span
+        class="badge status"
+        data-testid="test-todo-status"
+      >
+        Pending
+      </span>
+      <select
+        data-testid="test-todo-status-control"
+        aria-label="Change task status"
+        class="status-select"
+      >
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Done">Done</option>
+      </select>
+    </div>
 
-    <time
-      data-testid="test-todo-due-date"
-      datetime="2026-04-12T18:00:00Z"
-    >
-      Due Apr 12, 2026
-    </time>
-  </div>
-
-  <div
-    data-testid="test-todo-time-remaining"
-    aria-live="polite"
-  >
-    Due in 2 days
+    <div class="time-container">
+      <time
+        data-testid="test-todo-due-date"
+        datetime="2026-04-12T18:00:00Z"
+      >
+        Due Apr 12, 2026
+      </time>
+      <div
+        data-testid="test-todo-time-remaining"
+        aria-live="polite"
+      >
+        Due in 2 days
+      </div>
+      <div
+        data-testid="test-todo-overdue-indicator"
+        class="overdue-indicator"
+        aria-live="polite"
+      ></div>
+    </div>
   </div>
 
   <!-- TAGS -->
   <ul data-testid="test-todo-tags" role="list">
     <li data-testid="test-todo-tag-work">work</li>
     <li data-testid="test-todo-tag-urgent">urgent</li>
-    <li>design</li>
+    <li data-testid="test-todo-tag-design">design</li>
   </ul>
 
   <!-- ACTIONS -->
@@ -89,6 +132,77 @@
     </button>
   </div>
 
+  <!-- EDIT FORM -->
+  <form
+    data-testid="test-todo-edit-form"
+    class="edit-form"
+    style="display: none;"
+  >
+    <div class="form-group">
+      <label for="edit-title">Title</label>
+      <input
+        type="text"
+        id="edit-title"
+        data-testid="test-todo-edit-title-input"
+        value="Finish UI Todo Card"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="edit-description">Description</label>
+      <textarea
+        id="edit-description"
+        data-testid="test-todo-edit-description-input"
+        rows="3"
+      >
+      Build a fully accessible and responsive todo card with proper semantics 
+      and test IDs. This task involves implementing advanced features 
+      like edit mode, status transitions, priority indicators, expand/collapse
+       functionality, and enhanced time management with overdue detection. 
+       The card should support keyboard navigation and screen reader accessibility.</textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="edit-priority">Priority</label>
+        <select
+          id="edit-priority"
+          data-testid="test-todo-edit-priority-select"
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High" selected>High</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-due-date">Due Date</label>
+        <input
+          type="datetime-local"
+          id="edit-due-date"
+          data-testid="test-todo-edit-due-date-input"
+          value="2026-04-12T18:00"
+        />
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="button"
+        data-testid="test-todo-save-button"
+        class="save-btn"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        data-testid="test-todo-cancel-button"
+        class="cancel-btn"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
 
 </article>
 
